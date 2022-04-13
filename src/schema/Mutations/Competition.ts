@@ -1,5 +1,7 @@
 import { GraphQLBoolean, GraphQLID, GraphQLInt, GraphQLString } from "graphql";
-import { Competitions } from "../../Entities/Competition";
+import { resolve } from "path";
+import { Competition } from "../../Entities/Competition";
+import { getTeamsByLeagueCode } from "../../Services/competitionService";
 import { CompetitionType } from "../typeDefs/Competition";
 import { MessageType } from "../typeDefs/Message";
 
@@ -11,9 +13,9 @@ export const CREATE_COMPETITION = {
     code: { type: GraphQLString },
     areaName: { type: GraphQLString },
   },
-  async resolve(_: any, args: Competitions) {
+  async resolve(_: any, args: Competition) {
     const { idCompetition, name, code, areaName } = args;
-    const result = await Competitions.insert({
+    const result = await Competition.insert({
       idCompetition: idCompetition,
       name: name,
       code,
@@ -27,13 +29,26 @@ export const CREATE_COMPETITION = {
   },
 };
 
+export const IMPORT_LEAGUE = {
+  type: MessageType,
+  args : { 
+    leagueCode: {type: GraphQLString }
+  },
+  async resolve(_: any, args: any){
+    //console.log('leagueCode: ', args.leagueCode)
+    const result = await getTeamsByLeagueCode(args.leagueCode)
+    console.log(result)
+    return result
+  }
+}
+
 export const DELETE_COMPETITION = {
   type: GraphQLBoolean,
   args: {
     idCompetition: { type: GraphQLID },
   },
   async resolve(_: any, args: any) {
-    const result = await Competitions.delete({
+    const result = await Competition.delete({
       idCompetition: args.idCompetition,
     });
     return result.affected ?? 0 > 0 ? true : false;
@@ -49,8 +64,7 @@ export const UPDATE_COMPETITION = {
     areaName: { type: GraphQLString },
   },
   async resolve(_: any, args: any) {
-    //console.log(args)
-    const result = await Competitions.update(
+    const result = await Competition.update(
       { idCompetition: args.idCompetition },
       { ...args }
     );

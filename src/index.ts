@@ -3,8 +3,6 @@ import app from "./app";
 import { connectDB } from "./db";
 import { PORT } from "./config";
 
-//const PORT = process.env.PORT || 3000;
-
 async function main() {
   try {
     await connectDB();
