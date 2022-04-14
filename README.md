@@ -8,21 +8,21 @@ To setup environment variables
 To create a server
 ## express-graphql
 to combine express with graphql
-## grapgh
+## graphgl
 to work with graphql tools
 ## pg
 to work with postgres database
 ## typeorm
 to work with relationship databases independently of the database manager and its queries
-# Instruccions to run locally
+# Instructions to run locally
 
-1.- Need to install pgadmin or another database manager to work with postgres
+1.- Need to install pgadmin or another database manager to work with postgresql
 
-2.- Change the environment variables depending on your local server configuration
+2.- Change the environment variables depending on your local server configuration especially DB_PASSWORD and DB_PORT
 
-3.- Create a database call football which is named in the db.ts file inside src/ folder
+3.- Create a database name "football" which is declared in the .env file
 
-4.- Execute "npm i" then run "npm run dev" or "npm run build" and "npm start". the server console must be show the message "server listening on port : 3000" with no erros
+4.- Execute "npm i" then run "npm run dev" or "npm run build" and "npm start" (typeORM automatically create the tables). the server console must show the message "server listening on port : 3000" with no errors
 
 5.- Open http://localhost:3000/graphql on web browser
 
