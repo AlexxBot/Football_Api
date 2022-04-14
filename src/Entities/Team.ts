@@ -4,6 +4,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryColumn,
@@ -26,7 +27,9 @@ export class Team extends BaseEntity {
   @Column({nullable: true})
   email: string;
   @ManyToOne(() => Competition, (competition) => competition.idCompetition)
+  @JoinColumn()
   idCompetition: number;
   @OneToMany(() => Player, (player) => player.idPlayer, { eager: true })
+  @JoinColumn()
   players: Player[];
 }

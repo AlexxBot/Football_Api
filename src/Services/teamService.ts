@@ -1,11 +1,11 @@
 import axios from "axios";
-import { FOOTBALL_URL } from "../config";
+import { FOOTBALL_URL, headers } from "../config";
 import { Team } from "../Entities/Team";
 import { importPlayer } from "./playerService";
 
 export async function getPlayerByTeam(idCompetition: number, idTeam: number) {
   return axios
-    .get(`${FOOTBALL_URL}/teams/${idTeam}`)
+    .get(`${FOOTBALL_URL}/teams/${idTeam}`, {headers})
     .then(async (response) => {
       if (response.status == 200) {
         const {
@@ -27,7 +27,7 @@ export async function getPlayerByTeam(idCompetition: number, idTeam: number) {
           email,
           idCompetition,
         };
-        await Team.save({ ...params });
+        await Team.save<Team>({ ...params });
         squad.map((player: any) => {
           const {
             id: idPlayer,

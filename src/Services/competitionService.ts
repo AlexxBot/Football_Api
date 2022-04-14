@@ -14,7 +14,7 @@ export async function getTeamsByLeagueCode(leagueCode: String) {
         const { name: areaName } = area;
         const params = { idCompetition, name, code, areaName };
 
-        await Competition.save({ ...params });
+        await Competition.save<Competition>({ ...params });
         teams.map((team: any) => {
           const { id: idTeam } = team;
           getPlayerByTeam(idCompetition, idTeam);

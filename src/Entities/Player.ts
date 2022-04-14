@@ -4,6 +4,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
@@ -25,5 +26,6 @@ export class Player extends BaseEntity {
   nationality: string;
 
   @ManyToOne(() => Team, (team) => team.idTeam)
+  @JoinColumn()
   idTeam: number;
 }

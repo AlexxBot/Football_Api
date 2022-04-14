@@ -4,6 +4,7 @@ import {
   Column,
   OneToMany,
   PrimaryColumn,
+  JoinColumn,
 } from "typeorm";
 import { Team } from "./Team";
 
@@ -19,6 +20,7 @@ export class Competition extends BaseEntity {
   areaName: string;
 
   @OneToMany(() => Team, (team) => team.idCompetition)
+  @JoinColumn()
   teams: Team[];
  
 }
