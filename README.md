@@ -28,12 +28,7 @@ to work with relationship databases independently of the database manager and it
 
 # Mutation example
 ## importLeague
-mutation{
-  importLeague(leagueCode: "CL"{
-    success,
-    message
-  }
-}
+mutation{ importLeague(leagueCode: "CL"){ success, message } }
 
 # Queries examples
 ## players
