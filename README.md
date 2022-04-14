@@ -20,6 +20,8 @@ to work with relationship databases independently of the database manager and it
 
 2.- Change the environment variables depending on your local server configuration
 
-3.- Create a database call football, which is named in the db.ts file in src folder
+3.- Create a database call football, which is named in the db.ts file inside src/ folder
 
-4.- Execute npm i then run npm run devor npm run build and npm start
+4.- Execute npm i then run npm run dev or npm run build and npm start
+
+5.- Open http://localhost:3000/graphql on web browser

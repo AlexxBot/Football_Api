@@ -37,7 +37,6 @@ export const IMPORT_LEAGUE = {
   async resolve(_: any, args: any){
     //console.log('leagueCode: ', args.leagueCode)
     const result = await getTeamsByLeagueCode(args.leagueCode)
-    console.log(result)
     return result
   }
 }

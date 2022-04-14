@@ -10,10 +10,10 @@ import { GET_PLAYERS, GET_PLAYERS_BY_COMPETITION_TEAM } from './Queries/Player'
 const RootQuery = new GraphQLObjectType({
     name: "RootQuery",
     fields: {
-        getCompetitions: GET_COMPETITIONS,
+        /* getCompetitions: GET_COMPETITIONS,
         getCompetition: GET_COMPETITION,
         getTeams: GET_TEAMS,
-        getPlayer: GET_PLAYERS,
+        getPlayer: GET_PLAYERS, */
         //those are the 2 queries requested in the challenge
         players: GET_PLAYERS_BY_COMPETITION_TEAM,
         team: GET_TEAM_PLAYERS
@@ -25,12 +25,12 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
     name: "Mutation",
     fields: {
-        createCompetition: CREATE_COMPETITION,
+        /*createCompetition: CREATE_COMPETITION,
         deleteCompetition: DELETE_COMPETITION,
         updateCompetition: UPDATE_COMPETITION,
 
         createTeam: CREATE_TEAM,
-        createPlayer: CREATE_PLAYER,
+        createPlayer: CREATE_PLAYER,*/
 
         //it is the mutation requested in the challenge 
         importLeague: IMPORT_LEAGUE
